@@ -3,7 +3,7 @@
 <%--<%@page contentType="text/html; charset=GB2312"%>--%>
 
 <%@ page import="dao.impl.FilmImpl" %>
-<%@ page import="model.Film" %>
+<%@ page import="model.FilmSelect" %>
 <%! FilmImpl test = new FilmImpl();%>
 <%--<%@ page isELIgnored="false" %>--%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -49,7 +49,7 @@
       request.setCharacterEncoding("utf-8");
       String id = request.getParameter("SearchId");
       String name = request.getParameter("SearchName");
-      List<Film> ids = null;
+      List<FilmSelect> ids = null;
       if (id == "" && name == ""){
           System.out.println("no message!");
       }

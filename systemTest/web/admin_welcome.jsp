@@ -36,7 +36,7 @@
             	<ul class="Tstage" >
                 	<li><a href="admin_welcome.jsp">欢迎页面</a></li>
                 	<li><a href="admin_select.jsp">查询科研平台数据</a></li>
-                	<li><a href="admin_alter.jsp">修改科研平台数据</a></li>
+                	<li><a href="admin_update.jsp">修改科研平台数据</a></li>
                 	<li><a href="admin_add.jsp">增加科研平台数据</a></li>
                 	<li><a href="admin_delete.jsp">删除科研平台数据</a></li>
                 </ul>

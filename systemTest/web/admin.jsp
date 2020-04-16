@@ -4,16 +4,16 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8"> 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>重庆市科研平台数据管理系统</title>
-<link rel="stylesheet" type="text/css" href="css/style.css" />
-<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-<script src="js/city-picker.data.js"></script>
-<script src="js/city-picker.js"></script>
-<style>
-.city-picker-span { width:300px;}
-</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>重庆市科研平台数据管理系统</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/city-picker.data.js"></script>
+    <script src="js/city-picker.js"></script>
+    <style>
+    .city-picker-span { width:300px;}
+    </style>
 </head>
 
 <body style="background:#328f46">
@@ -36,7 +36,7 @@
             	<ul class="Tstage" >
                 	<li><a href="admin_welcome.jsp">欢迎页面</a></li>
                 	<li><a href="admin_select.jsp">查询科研平台数据</a></li>
-                	<li><a href="admin_alter.jsp">修改科研平台数据</a></li>
+                	<li><a href="admin_update.jsp">修改科研平台数据</a></li>
                 	<li><a href="admin_add.jsp">增加科研平台数据</a></li>
                 	<li><a href="admin_delete.jsp">删除科研平台数据</a></li>
                 </ul>
