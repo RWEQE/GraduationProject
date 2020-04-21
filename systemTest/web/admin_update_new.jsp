@@ -1,3 +1,4 @@
+<%--数据更新-跳转输入数据-功能页--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ page import="java.io.*,java.util.*" %>
@@ -51,74 +52,97 @@
                         <li><a href="admin_delete.jsp">删除科研平台数据</a></li>
                     </ul>
                 </li>
-                <li><a href="#" class="nav"><em class="e2"></em>账号管理<div class="clear"></div></a>
+                <li><a href="#" class="nav"><em class="e2"></em>其他<div class="clear"></div></a>
                     <ul class="Tstage">
-                        <li><a href="users_info.jsp">账户信息</a></li>
-                        <li><a href="users_safe.jsp">账户安全</a></li>
+                        <li><a href="admin_visualization.jsp">可视化展示</a></li>
+                        <li><a href="">开发者信息</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
 
-        <div class="messageright">
+        <div class="messageright" style="background:#EFFFFF;display: block;max-height:100%;overflow-y: scroll">
             <%
                 request.setCharacterEncoding("utf-8");
-                String oldId = request.getParameter("updateId");
-                String oldName = request.getParameter("updateName");
-                String oldAddress = request.getParameter("updateAddress");
+                String oldLabName = request.getParameter("updateLabName");
+                String oldUnit = request.getParameter("updateUnit");
+                String oldAdministrativeArea = request.getParameter("updateAdministrativeArea");
+                String oldPrincipal = request.getParameter("updatePrincipal");
                 String oldTel = request.getParameter("updateTel");
-                String oldEmail = request.getParameter("updateEmail");
+                String oldAddress = request.getParameter("updateAddress");
+                String oldSubjectArea = request.getParameter("updateSubjectArea");
+                String oldConfirmYear = request.getParameter("updateConfirmYear");
             %>
             <form class="form-horizontal" method="post" action="admin_update_new.jsp">
                 <div class="form-group">
-                    <label for="inputId" class="col-sm-2 control-label">Id</label>
+                    <label for="inputLabName" class="col-sm-2 control-label">机构名称</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputId" name="inputId" value=<%=oldId%> placeholder="id">
+                        <input type="text" class="form-control" id="inputLabName" name="inputLabName" value=<%=oldLabName%> placeholder="id">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+                    <label for="inputUnit" class="col-sm-2 control-label">所属单位</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputName" name="inputName" value=<%=oldName%>>
+                        <input type="text" class="form-control" id="inputUnit" name="inputUnit" value=<%=oldUnit%>>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputAddress" class="col-sm-2 control-label">Address</label>
+                    <label for="inputAdministrativeArea" class="col-sm-2 control-label">所属行政区域</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputAdministrativeArea" name="inputAdministrativeArea" value=<%=oldAdministrativeArea%>>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPrincipal" class="col-sm-2 control-label">负责人</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputPrincipal" name="inputPrincipal" value=<%=oldPrincipal%>>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputTel" class="col-sm-2 control-label">联系电话</label>
+                    <div class="col-sm-10">
+                        <input type="tel" class="form-control" id="inputTel" name="inputTel" value=<%=oldTel%>>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress" class="col-sm-2 control-label">地址</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="inputAddress" name="inputAddress" value=<%=oldAddress%>>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputTel" class="col-sm-2 control-label">tel</label>
+                    <label for="inputSubjectArea" class="col-sm-2 control-label">技术领域</label>
                     <div class="col-sm-10">
-                        <input type="tel" class="form-control" id="inputTel" name="inputTel" value=<%=oldTel%>>
+                        <input type="text" class="form-control" id="inputSubjectArea" name="inputSubjectArea" value=<%=oldSubjectArea%>>
                     </div>
                 </div>
-                <%--            <br>--%>
                 <div class="form-group">
-                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                    <label for="inputConfirmYear" class="col-sm-2 control-label">判定年限</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail" name="inputEmail" value=<%=oldEmail%>>
+                        <input type="text" class="form-control" id="inputConfirmYear" name="inputConfirmYear" value=<%=oldConfirmYear%>>
                     </div>
                 </div>
                 <hr>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-info" onclick="reMind()">增加</button>
+                        <button type="submit" class="btn btn-danger" onclick="reMind()">修改</button>
                     </div>
                 </div>
                 <%--            <input style="margin-left: 15px" type="submit" class="btn btn-info" value="增加"></input>--%>
             </form>
             <%
                 request.setCharacterEncoding("utf-8");
-                String newId = request.getParameter("inputId");
-                String newName = request.getParameter("inputName");
-                String newAddress = request.getParameter("inputAddress");
+                String newLabName = request.getParameter("inputLabName");
+                String newUnit = request.getParameter("inputUnit");
+                String newAdministrativeArea = request.getParameter("inputAdministrativeArea");
+                String newPrincipal = request.getParameter("inputPrincipal");
                 String newTel = request.getParameter("inputTel");
-                String newEmail = request.getParameter("inputEmail");
+                String newAddress = request.getParameter("inputAddress");
+                String newSubjectArea = request.getParameter("inputSubjectArea");
+                String newConfirmYear = request.getParameter("inputConfirmYear");
     //            System.out.println(newId + newName + newAddress + newTel + newEmail);
-                if (newId!=null && newName!=null && newAddress!=null && newTel!=null && newEmail!=null) {
-                    updateMessage.updateData(newId,newName,newAddress,newTel,newEmail);
+                if (newLabName!=null && newUnit!=null && newAddress!=null && newTel!=null && newAdministrativeArea!=null && newPrincipal!=null && newSubjectArea!=null && newConfirmYear!=null) {
+                    updateMessage.updateData(newLabName,newUnit,newAdministrativeArea,newPrincipal,newTel,newAddress,newSubjectArea,newConfirmYear);
                 }
             %>
             <script type="text/javascript">

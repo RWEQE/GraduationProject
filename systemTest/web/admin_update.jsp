@@ -1,10 +1,11 @@
+<%--数据更新功能页--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ page import="java.io.*,java.util.*" %>
 
 <%@ page import="dao.impl.FilmImpl" %>
 <%@ page import="model.FilmSelect" %>
-<%! FilmImpl test = new FilmImpl();%>
+<%! FilmImpl updateMessage = new FilmImpl();%>
 
 <!doctype html >
 <html>
@@ -22,6 +23,12 @@
     <%--<script src="js/city-picker.js"></script>--%>
     <style>
         .city-picker-span { width:300px;}
+        .messageright>table>thead>tr>th{
+            background:#FFFAF0;
+            position: -webkit-sticky;
+            position: sticky;
+            top:0px;
+        }
     </style>
 </head>
 
@@ -53,24 +60,28 @@
                         <li><a href="admin_delete.jsp">删除科研平台数据</a></li>
                     </ul>
                 </li>
-                <li><a href="#" class="nav"><em class="e2"></em>账号管理<div class="clear"></div></a>
+                <li><a href="#" class="nav"><em class="e2"></em>其他<div class="clear"></div></a>
                     <ul class="Tstage">
-                        <li><a href="users_info.jsp">账户信息</a></li>
-                        <li><a href="users_safe.jsp">账户安全</a></li>
+                        <li><a href="admin_visualization.jsp">可视化展示</a></li>
+                        <li><a href="">开发者信息</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
 
-        <div class="messageright">
+        <div class="messageright" style="display: block;max-height:100%;overflow-y: scroll">
             <form class="form-inline" id="divm" method="post" action="admin_update.jsp" >
                 <div class="form-group" id="div1">
-                    <label for="SearchId">Id</label>
-                    <input type="text" class="form-control" name="SearchId" id="SearchId">
+                    <label for="SearchLabName">机构名称</label>
+                    <input type="text" class="form-control" name="SearchLabName" id="SearchLabName">
                 </div>
                 <div class="form-group" id="div2">
-                    <label for="SearchName">Name</label>
-                    <input type="text" class="form-control" name="SearchName" id="SearchName">
+                    <label for="SearchUnit">所属单位</label>
+                    <input type="text" class="form-control" name="SearchUnit" id="SearchUnit">
+                </div>
+                <div class="form-group" id="div3">
+                    <label for="SearchAddress">地址</label>
+                    <input type="text" class="form-control" name="SearchAddress" id="SearchAddress">
                 </div>
                 <div><img src="./images/Search.png" onclick="out()"></div>
                 <input class="btn btn-success" type="submit" name="submit" value="搜索">
@@ -79,11 +90,11 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>姓名</th>
+                    <th>机构名称</th>
+                    <th>所属单位</th>
+                    <th>所属行政区域</th>
                     <th>地址</th>
-                    <th>电话号码</th>
-                    <th>邮箱地址</th>
+                    <th>技术领域</th>
                     <th>其他</th>
                 </tr>
                 </thead>
@@ -94,18 +105,21 @@
 
             <%
                 request.setCharacterEncoding("utf-8");
-                String id = request.getParameter("SearchId");
-                String name = request.getParameter("SearchName");
-    //                System.out.println(id+  " " +name);
+                String labName = request.getParameter("SearchLabName");
+                String unit = request.getParameter("SearchUnit");
+                String address = request.getParameter("SearchAddress");
                 List<FilmSelect> ids = null;
-                if (id == "" && name == ""){
+                if (labName == "" && unit == "" && address == ""){
                     System.out.println("no message!");
                 }
-                else if(id != "" && name == "") {
-                    ids = test.selectAllFilmById(id);
+                else if(labName != "" && unit == "" && address == "") {
+                    ids = updateMessage.selectAllFilmByLabName(labName);
                 }
-                else if (name != "" && id == ""){
-                    ids = test.selectAllFilmByName(name);
+                else if (unit != "" && labName == "" && address == ""){
+                    ids = updateMessage.selectAllFilmByUnit(unit);
+                }
+                else if (address != "" && labName == "" && unit == ""){
+                    ids = updateMessage.selectAllFilmByAddress(address);
                 }
             %>
 
@@ -121,7 +135,7 @@
                     // alert(targ.tagName);
                     //获取这个元素对应的数据的id
                     let targetData = targ.parentNode.parentNode.children;
-                    alert("你要修改的id是：" + targetData[0].innerHTML);
+                    // alert("你要修改的id是：" + targetData[0].innerHTML);
                     // console.log(targetData.innerHTML);
 
                     //虚拟表单提交
@@ -129,34 +143,49 @@
                     temp.action = "admin_update_new.jsp";//提交的地址
                     temp.method = "post";//也可指定为get
                     temp.style.display = "none";
-                    //原来的id
-                    let oldId = document.createElement("textarea");
-                    oldId.name = "updateId";
-                    oldId.value = targetData[0].innerHTML;
-                    temp.appendChild(oldId);
-                    //原来的名字 name
-                    let oldName = document.createElement("textarea");
-                    oldName.name = "updateName";
-                    oldName.value = targetData[1].innerHTML;
-                    temp.appendChild(oldName);
-                    //原来的地址 address
-                    let oldAddress = document.createElement("textarea");
-                    oldAddress.name = "updateAddress";
-                    oldAddress.value = targetData[2].innerHTML;
-                    temp.appendChild(oldAddress);
-                    //原来的电话 tel
+                    //1. 原来的机构名称 labName
+                    let oldLabName = document.createElement("textarea");
+                    oldLabName.name = "updateLabName";
+                    oldLabName.value = targetData[0].innerHTML;
+                    temp.appendChild(oldLabName);
+                    //2. 原来的所属单位 unit
+                    let oldUnit = document.createElement("textarea");
+                    oldUnit.name = "updateUnit";
+                    oldUnit.value = targetData[1].innerHTML;
+                    temp.appendChild(oldUnit);
+                    //3. 原来的所属行政区域 administrativeArea
+                    let oldAdministrativeArea = document.createElement("textarea");
+                    oldAdministrativeArea.name = "updateAdministrativeArea";
+                    oldAdministrativeArea.value = targetData[2].innerHTML;
+                    temp.appendChild(oldAdministrativeArea);
+                    //4. 原来的负责人 principal
+                    let oldPrincipal = document.createElement("textarea");
+                    oldPrincipal.name = "updatePrincipal";
+                    oldPrincipal.value = "请输入负责人的名字";
+                    temp.appendChild(oldPrincipal);
+                    //5. 原来的电话 tel
                     let oldTel = document.createElement("textarea");
                     oldTel.name = "updateTel";
-                    oldTel.value = targetData[3].innerHTML;
+                    oldTel.value = "请输入负责人的电话信息";
                     temp.appendChild(oldTel);
-                    //原来的邮箱 email
-                    let oldEmail = document.createElement("textarea");
-                    oldEmail.name = "updateEmail";
-                    oldEmail.value = targetData[4].innerHTML;
-                    temp.appendChild(oldEmail);
+                    //6. 原来的地址 address
+                    let oldAddress = document.createElement("textarea");
+                    oldAddress.name = "updateAddress";
+                    oldAddress.value = targetData[3].innerHTML;
+                    temp.appendChild(oldAddress);
+                    //7. 原来的技术领域 subjectArea
+                    let oldSubjectArea = document.createElement("textarea");
+                    oldSubjectArea.name = "updateSubjectArea";
+                    oldSubjectArea.value = targetData[4].innerHTML;
+                    temp.appendChild(oldSubjectArea);
+                    //8. 原来的认定年限 confirmYear
+                    let oldConfirmYear = document.createElement("textarea");
+                    oldConfirmYear.name = "updateConfirmYear";
+                    oldConfirmYear.value = "请输入认定年限";
+                    temp.appendChild(oldConfirmYear);
 
                     document.body.appendChild(temp);
-                    if (window.confirm("你确定要修改 id 为" + targetData[0].innerHTML + "的这条数据吗?")) {
+                    if (confirm("你确定要修改这条数据吗?")) {
                         temp.submit();
                         alert("正在进入修改！");
                     }
@@ -181,14 +210,6 @@
                     }
                 }
             </script>
-            <%
-                request.setCharacterEncoding("utf-8");
-                String deleteId = request.getParameter("deleteId");
-                if (deleteId != null){
-                    System.out.println(deleteId);
-                    test.deleteData(deleteId);
-                }
-            %>
         </div>
     </div>
 

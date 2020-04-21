@@ -1,3 +1,4 @@
+<%--数据增加功能页--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.io.*,java.util.*" %>
@@ -51,66 +52,87 @@
                         <li><a href="admin_delete.jsp">删除科研平台数据</a></li>
                     </ul>
                 </li>
-                <li><a href="#" class="nav"><em class="e2"></em>账号管理<div class="clear"></div></a>
+                <li><a href="#" class="nav"><em class="e2"></em>其他<div class="clear"></div></a>
                     <ul class="Tstage">
-                        <li><a href="users_info.jsp">账户信息</a></li>
-                        <li><a href="users_safe.jsp">账户安全</a></li>
+                        <li><a href="admin_visualization.jsp">可视化展示</a></li>
+                        <li><a href="">开发者信息</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
 
-        <div class="messageright">
+        <div class="messageright" style="background:#FFFFEF;display: block;max-height:100%;overflow-y: scroll">
             <form class="form-horizontal" method="post" action="admin_add.jsp">
                 <div class="form-group">
-                    <label for="inputId" class="col-sm-2 control-label">Id</label>
+                    <label for="inputLabName" class="col-sm-2 control-label">机构名称</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputId" name="inputId" placeholder="Id">
+                        <input type="text" class="form-control" id="inputLabName" name="inputLabName" placeholder="LabName">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+                    <label for="inputUnit" class="col-sm-2 control-label">所属单位</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name">
+                        <input type="text" class="form-control" id="inputUnit" name="inputUnit" placeholder="Unit">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputAddress" class="col-sm-2 control-label">Address</label>
+                    <label for="inputAdministrativeArea" class="col-sm-2 control-label">所属行政区域</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputAdministrativeArea" name="inputAdministrativeArea" placeholder="AdministrativeArea">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPrincipal" class="col-sm-2 control-label">负责人</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputPrincipal" name="inputPrincipal" placeholder="Principal">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputTel" class="col-sm-2 control-label">联系电话</label>
+                    <div class="col-sm-10">
+                        <input type="tel" class="form-control" id="inputTel" name="inputTel" placeholder="tel">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress" class="col-sm-2 control-label">地址</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="inputAddress" name="inputAddress" placeholder="Address">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputTel" class="col-sm-2 control-label">tel</label>
+                    <label for="inputSubjectArea" class="col-sm-2 control-label">技术领域</label>
                     <div class="col-sm-10">
-                        <input type="tel" class="form-control" id="inputTel" name="inputTel" placeholder="tel">
+                        <input type="text" class="form-control" id="inputSubjectArea" name="inputSubjectArea" placeholder="SubjectArea">
                     </div>
                 </div>
     <%--            <br>--%>
                 <div class="form-group">
-                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                    <label for="inputConfirmYear" class="col-sm-2 control-label">认定年限</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email">
+                        <input type="text" class="form-control" id="inputConfirmYear" name="inputConfirmYear" placeholder="ConfirmYear">
                     </div>
                 </div>
                 <hr>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-info" onclick="reMind()">增加</button>
+                        <button type="submit" class="btn btn-warning" onclick="reMind()">增加</button>
                     </div>
                 </div>
     <%--            <input style="margin-left: 15px" type="submit" class="btn btn-info" value="增加"></input>--%>
             </form>
             <%
                 request.setCharacterEncoding("utf-8");
-                String id = request.getParameter("inputId");
-                String name = request.getParameter("inputName");
-                String address = request.getParameter("inputAddress");
+                String labName = request.getParameter("inputLabName");
+                String unit = request.getParameter("inputUnit");
+                String administrativeArea = request.getParameter("inputAdministrativeArea");
+                String principal = request.getParameter("inputPrincipal");
                 String tel = request.getParameter("inputTel");
-                String email = request.getParameter("inputEmail");
-    //            System.out.println(id + name + address + tel + email);
-                if (id!=null && name!=null && address!=null && tel!=null && email!=null) {
-                    addMessage.addData(id, name, address, tel, email);
+                String address = request.getParameter("inputAddress");
+                String subjectArea = request.getParameter("inputSubjectArea");
+                String confirmYear = request.getParameter("inputConfirmYear");
+                //            System.out.println(id + name + address + tel + email);
+                if (labName!=null && unit!=null && administrativeArea!=null && principal!=null && address!=null && tel!=null && subjectArea!=null && confirmYear!=null) {
+                    addMessage.addData(labName, unit, administrativeArea, principal, tel, address, subjectArea, confirmYear);
                 }
             %>
             <script type="text/javascript">

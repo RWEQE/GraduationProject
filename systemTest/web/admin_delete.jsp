@@ -1,3 +1,4 @@
+<%--数据删除功能页--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ page import="java.io.*,java.util.*" %>
@@ -22,6 +23,12 @@
     <%--<script src="js/city-picker.js"></script>--%>
     <style>
         .city-picker-span { width:300px;}
+        .messageright>table>thead>tr>th{
+            background:#FFFAF0;
+            position: -webkit-sticky;
+            position: sticky;
+            top:0px;
+        }
     </style>
 </head>
 
@@ -53,24 +60,28 @@
                         <li><a href="admin_delete.jsp">删除科研平台数据</a></li>
                     </ul>
                 </li>
-                <li><a href="#" class="nav"><em class="e2"></em>账号管理<div class="clear"></div></a>
+                <li><a href="#" class="nav"><em class="e2"></em>其他<div class="clear"></div></a>
                     <ul class="Tstage">
-                        <li><a href="users_info.jsp">账户信息</a></li>
-                        <li><a href="users_safe.jsp">账户安全</a></li>
+                        <li><a href="admin_visualization.jsp">可视化展示</a></li>
+                        <li><a href="">开发者信息</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
 
-        <div class="messageright">
+        <div class="messageright" style="display: block;max-height:100%;overflow-y: scroll">
             <form class="form-inline" id="divm" method="post" action="admin_delete.jsp" >
                 <div class="form-group" id="div1">
-                    <label for="SearchId">Id</label>
-                    <input type="text" class="form-control" name="SearchId" id="SearchId">
+                    <label for="SearchLabName">机构名称</label>
+                    <input type="text" class="form-control" name="SearchLabName" id="SearchLabName">
                 </div>
                 <div class="form-group" id="div2">
-                    <label for="SearchName">Name</label>
-                    <input type="text" class="form-control" name="SearchName" id="SearchName">
+                    <label for="SearchUnit">所属单位</label>
+                    <input type="text" class="form-control" name="SearchUnit" id="SearchUnit">
+                </div>
+                <div class="form-group" id="div3">
+                    <label for="SearchAddress">地址</label>
+                    <input type="text" class="form-control" name="SearchAddress" id="SearchAddress">
                 </div>
                 <div><img src="./images/Search.png" onclick="out()"></div>
                 <input class="btn btn-success" type="submit" name="submit" value="搜索">
@@ -79,11 +90,11 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>姓名</th>
+                    <th>机构名称</th>
+                    <th>所属单位</th>
+                    <th>所属行政区域</th>
                     <th>地址</th>
-                    <th>电话号码</th>
-                    <th>邮箱地址</th>
+                    <th>技术领域</th>
                     <th>其他</th>
                 </tr>
                 </thead>
@@ -94,18 +105,21 @@
 
             <%
                 request.setCharacterEncoding("utf-8");
-                String id = request.getParameter("SearchId");
-                String name = request.getParameter("SearchName");
-    //                System.out.println(id+  " " +name);
+                String labName = request.getParameter("SearchLabName");
+                String unit = request.getParameter("SearchUnit");
+                String address = request.getParameter("SearchAddress");
                 List<FilmSelect> ids = null;
-                if (id == "" && name == ""){
+                if (labName == "" && unit == "" && address == ""){
                     System.out.println("no message!");
                 }
-                else if(id != "" && name == "") {
-                    ids = deleteMessage.selectAllFilmById(id);
+                else if(labName != "" && unit == "" && address == "") {
+                    ids = deleteMessage.selectAllFilmByLabName(labName);
                 }
-                else if (name != "" && id == ""){
-                    ids = deleteMessage.selectAllFilmByName(name);
+                else if (unit != "" && labName == "" && address == ""){
+                    ids = deleteMessage.selectAllFilmByUnit(unit);
+                }
+                else if (address != "" && labName == "" && unit == ""){
+                    ids = deleteMessage.selectAllFilmByAddress(address);
                 }
             %>
 
@@ -120,9 +134,9 @@
                     //获取元素名称
                     // alert(targ.tagName);
                     //获取这个元素对应的数据的id
-                    let targetDataId = targ.parentNode.parentNode.children[0];
-                    alert("你要删除的id是：" + targetDataId.innerHTML);
-                    // console.log(targetDataId.innerHTML);
+                    let targetDataLabName = targ.parentNode.parentNode.children[0];
+                    // alert("你要删除的id是：" + targetDataLabName.innerHTML);
+                    // console.log(targetDataLabName.innerHTML);
 
                     //虚拟表单提交
                     let temp = document.createElement("form");
@@ -130,15 +144,14 @@
                     temp.method = "post";//也可指定为get
                     temp.style.display = "none";
                     let opt = document.createElement("textarea");
-                    opt.name = "deleteId";
-                    opt.value = targetDataId.innerHTML;
+                    opt.name = "deleteLabName";
+                    opt.value = targetDataLabName.innerHTML;
                     temp.appendChild(opt);
                     document.body.appendChild(temp);
-                    if (window.confirm("你确定要删除 id 为" + targetData[0].innerHTML + "的这条数据吗?")) {
+                    if (confirm("注意！你确定要删除这条数据吗?")) {
                         temp.submit();
                         alert("删除成功！");
-                    }
-                    else {
+                    }else {
                         //回退
                         // history.back();
                         location.reload();
@@ -161,10 +174,10 @@
             </script>
             <%
                 request.setCharacterEncoding("utf-8");
-                String deleteId = request.getParameter("deleteId");
-                if (deleteId != null){
-                    System.out.println(deleteId);
-                    deleteMessage.deleteData(deleteId);
+                String deleteLabName = request.getParameter("deleteLabName");
+                if (deleteLabName != null){
+                    System.out.println(deleteLabName);
+                    deleteMessage.deleteData(deleteLabName);
                 }
             %>
         </div>

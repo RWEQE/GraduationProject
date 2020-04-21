@@ -1,3 +1,4 @@
+<%--管理员欢迎页面--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.io.*,java.util.*" %>
@@ -24,7 +25,7 @@
     </div>
     <a class="username">欢迎登录：<i>管理员</i></a>
     <span class="btnbox">
-    	<a class="update" href="#" title="修改"></a><a class="exit" href="#" title="退出"></a>
+    	<a class="update" href="#" title="修改"></a><a class="exit" href="index.jsp" title="退出"></a>
     </span>
     <div class="clear" style="height:20px; background:#328f46"></div>
 </div>
@@ -41,22 +42,12 @@
                 	<li><a href="admin_delete.jsp">删除科研平台数据</a></li>
                 </ul>
             </li>
-            <li><a href="#"><em class="e2"></em>账号管理<div class="clear"></div></a>
-            	<ul class="Tstage">
-                	<li><a href="users_info.jsp">账户信息</a></li>
-                    <li><a href="users_safe.jsp">账户安全</a></li>
+            <li><a href="#" class="nav"><em class="e2"></em>其他<div class="clear"></div></a>
+                <ul class="Tstage">
+                    <li><a href="admin_visualization.jsp">可视化展示</a></li>
+                    <li><a href="">开发者信息</a></li>
                 </ul>
             </li>
-<!--             <li><a href="#"><em class="e3"></em>县域统计<div class="clear"></div></a>
-            	<ul class="Tstage">
-                	<li><a href="Manage_tiyan.html">县域交易额信息</a></li>
-                    <li><a href="Manage_tiyan.html">体验店信息</a></li>
-                    <li><a href="Manage_pinkun.html">贫困户信息</a></li>
-                    <li><a href="Manage_diansh.html">电商培训</a></li>
-                    <li><a href="Manage_wuliu.html">物流车辆</a></li>
-                </ul> -->
-            </li>
-           
         </ul>
     </div>
     
