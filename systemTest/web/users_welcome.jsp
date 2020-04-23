@@ -44,7 +44,7 @@
             	<ul class="Tstage">
                 	<li><a href="users_info.jsp">账户信息</a></li>
                     <li><a href="users_safe.jsp">账户安全</a></li>
-                    <li><a href="">开发者信息</a></li>
+                    <li><a href="users_developer.jsp">开发者信息</a></li>
                 </ul>
             </li>
         </ul>

@@ -44,19 +44,9 @@
             	<ul class="Tstage">
                 	<li><a href="users_info.jsp">账户信息</a></li>
                     <li><a href="users_safe.jsp">账户安全</a></li>
-                    <li><a href="">开发者信息</a></li>
+                    <li><a href="users_developer.jsp">开发者信息</a></li>
                 </ul>
             </li>
-<!--             <li><a href="#"><em class="e3"></em>县域统计<div class="clear"></div></a>
-            	<ul class="Tstage">
-                	<li><a href="Manage_tiyan.html">县域交易额信息</a></li>
-                    <li><a href="Manage_tiyan.html">体验店信息</a></li>
-                    <li><a href="Manage_pinkun.html">贫困户信息</a></li>
-                    <li><a href="Manage_diansh.html">电商培训</a></li>
-                    <li><a href="Manage_wuliu.html">物流车辆</a></li>
-                </ul> -->
-            </li>
-           
         </ul>
     </div>
     
@@ -65,15 +55,7 @@
     		<h1>欢迎使用</h1>
         </div>
     </div>
-<!--     <div class="clearh" style="height:0"></div> -->
 </div>
 
 </body>
 </html>
-<%--<script>--%>
-<%--	$(".Fstage>li").click(function(){--%>
-<%--		if($(this).children("ul").hasClass("Tstage"))--%>
-<%--		$(this).siblings("li").children("ul").hide();--%>
-<%--		$(this).children("ul").slideDown();--%>
-<%--	});--%>
-<%--</script>--%>

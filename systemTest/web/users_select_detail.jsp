@@ -45,17 +45,16 @@
         <ul class="Fstage">
             <li><a href="#" class="nav"><em class="e1"></em>常用操作<div class="clear"></div></a>
                 <ul class="Tstage" >
-                    <li><a href="admin_welcome.jsp">欢迎页面</a></li>
-                    <li><a href="admin_select.jsp">查询科研平台数据</a></li>
-                    <li><a href="admin_update.jsp">修改科研平台数据</a></li>
-                    <li><a href="admin_add.jsp">增加科研平台数据</a></li>
-                    <li><a href="admin_delete.jsp">删除科研平台数据</a></li>
+                    <li><a href="users_welcome.jsp">欢迎页面</a></li>
+                    <li><a href="users_select.jsp">查询科研平台数据</a></li>
+                    <li><a href="users_visualization.jsp">可视化展示</a></li>
                 </ul>
             </li>
-            <li><a href="#" class="nav"><em class="e2"></em>其他<div class="clear"></div></a>
+            <li><a href="#" class="nav"><em class="e2"></em>账号管理<div class="clear"></div></a>
                 <ul class="Tstage">
-                    <li><a href="admin_visualization.jsp">可视化展示</a></li>
-                    <li><a href="admin_developer.jsp">开发者信息</a></li>
+                    <li><a href="users_info.jsp">账户信息</a></li>
+                    <li><a href="users_safe.jsp">账户安全</a></li>
+                    <li><a href="users_developer.jsp">开发者信息</a></li>
                 </ul>
             </li>
         </ul>

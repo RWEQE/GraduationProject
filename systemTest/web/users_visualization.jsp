@@ -15,7 +15,7 @@
     <%--    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>--%>
     <%--    <script src="js/city-picker.data.js"></script>--%>
     <%--    <script src="js/city-picker.js"></script>--%>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/4.7.0/echarts-en.common.js"></script>
     <style>
         .city-picker-span { width:300px;}
         .visualization{
@@ -37,6 +37,7 @@
         <b class="line"></b>
     </div>
     <a class="username">欢迎登录：<i>普通用户</i></a>
+    <span style="margin-top: 45px;margin-left: 170px;font-size: 25px;display: inline-block;">正在展示可视化信息!</span>
     <span class="btnbox">
     	<a class="update" href="#" title="修改"></a><a class="exit" href="index.jsp" title="退出"></a>
     </span>
@@ -57,7 +58,7 @@
                 <ul class="Tstage">
                     <li><a href="users_info.jsp">账户信息</a></li>
                     <li><a href="users_safe.jsp">账户安全</a></li>
-                    <li><a href="">开发者信息</a></li>
+                    <li><a href="users_developer.jsp">开发者信息</a></li>
                 </ul>
             </li>
         </ul>
@@ -65,13 +66,12 @@
     
     <div class="messageright">
         <div class="visualization">
-            <button type="button" class="btn btn-info btn-lg btn-son" onclick="getechars()">可视化一</button>
-            <button type="button" class="btn btn-warning btn-lg btn-son" onclick="getechars4()">可视化二</button>
-            <button type="button" class="btn btn-danger btn-lg btn-son" onclick="getechars2()">可视化三</button>
-            <button type="button" class="btn btn-primary btn-lg btn-son" onclick="getechars3()">可视化四</button>
+            <button type="button" class="btn btn-info btn-lg btn-son" onclick="getechars()">近年情况</button>
+            <button type="button" class="btn btn-warning btn-lg btn-son" onclick="getechars4()">平台分类</button>
+            <button type="button" class="btn btn-danger btn-lg btn-son" onclick="getechars2()">地区分类</button>
+            <button type="button" class="btn btn-primary btn-lg btn-son" onclick="getechars3()">技术分类</button>
         </div>
-
-        <br/>
+<%--        <br/>--%>
         <div id="main" style="width: 100%;height:602px;"></div>
         <script type="text/javascript">
             // 基于准备好的dom，初始化echarts实例
@@ -80,7 +80,7 @@
                 myChart.clear();
                 // 指定图表的配置项和数据
                 var option = {
-                    backgroundColor:'#FFFAF0',
+                    backgroundColor:'#FFF',
                     title: {
                         text: '近五年市级以上重点实验室数量变化情况'
                     },

@@ -12,8 +12,14 @@ function login(){
 		form1.submit();
 	}
 	else if((document.getElementById('radio_2').checked)==true){
-		form1.action="admin.jsp";
-		form1.submit();
+		if (form1.username.value == "2016212078lwy" && form1.password.value == "123456") {
+			form1.action = "admin.jsp";
+			form1.submit();
+		}
+		else {
+			alert("账户密码错误！");
+			return false;
+		}
 	}
 	
 }

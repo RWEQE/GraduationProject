@@ -55,13 +55,13 @@
                 <li><a href="#" class="nav"><em class="e2"></em>其他<div class="clear"></div></a>
                     <ul class="Tstage">
                         <li><a href="admin_visualization.jsp">可视化展示</a></li>
-                        <li><a href="">开发者信息</a></li>
+                        <li><a href="admin_developer.jsp">开发者信息</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
 
-        <div class="messageright" style="background:#EFFFFF;display: block;max-height:100%;overflow-y: scroll">
+        <div class="messageright" style="background:#FFFAF0;display: block;max-height:100%;overflow-y: scroll">
             <%
                 request.setCharacterEncoding("utf-8");
                 String oldLabName = request.getParameter("updateLabName");

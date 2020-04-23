@@ -9,11 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>重庆市科研平台数据管理系统</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <%--<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>--%>
-    <%--<script src="js/city-picker.data.js"></script>--%>
-    <%--<script src="js/city-picker.js"></script>--%>
     <style>
-    .city-picker-span { width:300px;}
+        .city-picker-span { width:300px;}
     </style>
 </head>
 
@@ -44,15 +41,54 @@
             	<ul class="Tstage">
                 	<li><a href="users_info.jsp">账户信息</a></li>
                     <li><a href="users_safe.jsp">账户安全</a></li>
-                    <li><a href="">开发者信息</a></li>
+                    <li><a href="users_developer.jsp">开发者信息</a></li>
                 </ul>
             </li>
         </ul>
     </div>
     
     <div class="messageright">
-    	<div class="picbig">
-    		<h1>账户安全</h1>
+    	<div class="formpage">
+            <div class="clear" style="height:30px"></div>
+            <h3>您的安全服务</h3>
+            <p class="safelev">当前安全等级：<b>高</b><i>（您目前账户运行很安全）</i></p>
+<%--            <div class="clear" style="height:40px;"></div>--%>
+            <div class="safelist">
+                <table width="60%">
+                    <tr>
+                        <td height="80" width="5%" ><span class="sficon sfi1"><em class="yes"></em></span></td>
+                        <td width="30%" ><span class="sftit"><p>登陆密码<br/><i class="green">[已设置]</i></p></span></td>
+                        <td width="50%" class="sftext">
+                            <p>安全性高的密码可以使帐号更安全。建议您定期更换密码，且设置一个包含数字和字母，并长度超过6位以上的密码，为保证您的账户安全，只有在您绑定邮箱或手机后才可以修改密码。</p>
+                        </td>
+                        <td width="5%" class="sfbtn"><a href="#">修改密码</a></td>
+                    </tr>
+                    <tr>
+                        <td height="80" width="5%" ><span class="sficon sfi2"><em class="yes"></em></span></td>
+                        <td width="30%" ><span class="sftit"><p>登陆密码<br/><i class="green">[已设置]</i></p></span></td>
+                        <td width="50%" class="sftext">
+                            <p>安全性高的密码可以使帐号更安全。建议您定期更换密码，且设置一个包含数字和字母，并长度超过6位以上的密码，为保证您的账户安全，只有在您绑定邮箱或手机后才可以修改密码。</p>
+                        </td>
+                        <td width="5%" class="sfbtn"><a href="#">修改密码</a></td>
+                    </tr>
+                    <tr>
+                        <td height="80" width="5%" ><span class="sficon sfi3"><em class="yes"></em></span></td>
+                        <td width="30%" ><span class="sftit"><p>登陆密码<br/><i class="green">[已设置]</i></p></span></td>
+                        <td width="50%" class="sftext">
+                            <p>安全性高的密码可以使帐号更安全。建议您定期更换密码，且设置一个包含数字和字母，并长度超过6位以上的密码，为保证您的账户安全，只有在您绑定邮箱或手机后才可以修改密码。</p>
+                        </td>
+                        <td width="5%" class="sfbtn"><a href="#">修改密码</a></td>
+                    </tr>
+                    <tr>
+                        <td height="80" width="5%" ><span class="sficon sfi4"><em class="no"></em></span></td>
+                        <td width="30%" ><span class="sftit"><p>登陆密码<br/><i class="red">[未设置]</i></p></span></td>
+                        <td width="50%" class="sftext">
+                            <p>安全性高的密码可以使帐号更安全。建议您定期更换密码，且设置一个包含数字和字母，并长度超过6位以上的密码，为保证您的账户安全，只有在您绑定邮箱或手机后才可以修改密码。</p>
+                        </td>
+                        <td width="5%" class="sfbtn"><a href="#">修改密码</a></td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 <!--     <div class="clearh" style="height:0"></div> -->
@@ -60,10 +96,3 @@
 
 </body>
 </html>
-<%--<script>--%>
-<%--	$(".Fstage>li").click(function(){--%>
-<%--		if($(this).children("ul").hasClass("Tstage"))--%>
-<%--		$(this).siblings("li").children("ul").hide();--%>
-<%--		$(this).children("ul").slideDown();--%>
-<%--	});--%>
-<%--</script>--%>

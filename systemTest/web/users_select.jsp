@@ -23,7 +23,7 @@
     <style>
         .city-picker-span { width:300px;}
         .messageright>table>thead>tr>th{
-            background:#FFFAF0;
+            background:#FFF;
             position: -webkit-sticky;
             position: sticky;
             top:0px;
@@ -60,7 +60,7 @@
                     <ul class="Tstage">
                         <li><a href="users_info.jsp">账户信息</a></li>
                         <li><a href="users_safe.jsp">账户安全</a></li>
-                        <li><a href="">开发者信息</a></li>
+                        <li><a href="users_developer.jsp">开发者信息</a></li>
                     </ul>
                 </li>
             </ul>
@@ -122,6 +122,41 @@
 
             <script type="text/javascript">
                 let nam = '<%=ids%>'.slice(1, -1);
+                function otherFea() {
+                    if(!e){
+                        var e = window.event;
+                    }
+                    //获取事件点击元素
+                    let targ = e.target;
+                    //获取元素名称
+                    // alert(targ.tagName);
+                    //获取这个元素对应的数据的id
+                    let targetData = targ.parentNode.parentNode.children;
+                    // alert("你要修改的id是：" + targetData[0].innerHTML);
+                    // console.log(targetData.innerHTML);
+
+                    //虚拟表单提交
+                    let temp = document.createElement("form");
+                    temp.action = "users_select_detail.jsp";//提交的地址
+                    temp.method = "post";//也可指定为get
+                    temp.style.display = "none";
+                    //1. 原来的机构名称 labName 根据机构名称来查看详细
+                    let detailLabName = document.createElement("textarea");
+                    detailLabName.name = "detailLabName";
+                    detailLabName.value = targetData[0].innerHTML;
+                    temp.appendChild(detailLabName);
+
+                    document.body.appendChild(temp);
+                    if (confirm("你确定要查看这条数据吗?")) {
+                        temp.submit();
+                        alert("正在进入查看！");
+                    }
+                    else {
+                        //回退
+                        // history.back();
+                        location.reload();
+                    }
+                }
                 if (nam != "ul") {
                     let arr = nam.split(",");
                     let arrs = "";

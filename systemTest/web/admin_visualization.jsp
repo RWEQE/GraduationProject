@@ -12,10 +12,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <%--    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>--%>
-    <%--    <script src="js/city-picker.data.js"></script>--%>
-    <%--    <script src="js/city-picker.js"></script>--%>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/4.7.0/echarts-en.common.js"></script>
     <style>
         .city-picker-span { width:300px;}
         .visualization{
@@ -37,6 +34,7 @@
         <b class="line"></b>
     </div>
     <a class="username">欢迎登录：<i>管理员</i></a>
+    <span style="margin-top: 45px;margin-left: 170px;font-size: 25px;display: inline-block;">正在展示可视化信息!</span>
     <span class="btnbox">
     	<a class="update" href="#" title="修改"></a><a class="exit" href="index.jsp" title="退出"></a>
     </span>
@@ -58,7 +56,7 @@
             <li><a href="#" class="nav"><em class="e2"></em>其他<div class="clear"></div></a>
                 <ul class="Tstage">
                     <li><a href="admin_visualization.jsp">可视化展示</a></li>
-                    <li><a href="">开发者信息</a></li>
+                    <li><a href="admin_developer.jsp">开发者信息</a></li>
                 </ul>
             </li>
         </ul>
@@ -66,13 +64,12 @@
 
     <div class="messageright">
         <div class="visualization">
-            <button type="button" class="btn btn-info btn-lg btn-son" onclick="getechars()">可视化一</button>
-            <button type="button" class="btn btn-warning btn-lg btn-son" onclick="getechars4()">可视化二</button>
-            <button type="button" class="btn btn-danger btn-lg btn-son" onclick="getechars2()">可视化三</button>
-            <button type="button" class="btn btn-primary btn-lg btn-son" onclick="getechars3()">可视化四</button>
+            <button type="button" class="btn btn-info btn-lg btn-son" onclick="getechars()">近年情况</button>
+            <button type="button" class="btn btn-warning btn-lg btn-son" onclick="getechars4()">平台分类</button>
+            <button type="button" class="btn btn-danger btn-lg btn-son" onclick="getechars2()">地区分类</button>
+            <button type="button" class="btn btn-primary btn-lg btn-son" onclick="getechars3()">技术分类</button>
         </div>
-
-        <br/>
+<%--        <br/>--%>
         <div id="main" style="width: 100%;height:602px;"></div>
         <script type="text/javascript">
             // 基于准备好的dom，初始化echarts实例
@@ -81,7 +78,7 @@
                 myChart.clear();
                 // 指定图表的配置项和数据
                 var option = {
-                    backgroundColor:'#FFFAF0',
+                    backgroundColor:'#FFF',
                     title: {
                         text: '近五年市级以上重点实验室数量变化情况'
                     },

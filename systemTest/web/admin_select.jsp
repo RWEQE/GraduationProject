@@ -24,7 +24,7 @@
     <style>
         .city-picker-span { width:300px;}
         .messageright>table>thead>tr>th{
-            background:#FFFAF0;
+            background:#FFF;
             position: -webkit-sticky;
             position: sticky;
             top:0px;
@@ -63,7 +63,7 @@
                 <li><a href="#" class="nav"><em class="e2"></em>其他<div class="clear"></div></a>
                     <ul class="Tstage">
                         <li><a href="admin_visualization.jsp">可视化展示</a></li>
-                        <li><a href="">开发者信息</a></li>
+                        <li><a href="admin_developer.jsp">开发者信息</a></li>
                     </ul>
                 </li>
             </ul>
